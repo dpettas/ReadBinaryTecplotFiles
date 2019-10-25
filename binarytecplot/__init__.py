@@ -1,9 +1,10 @@
 import struct
 import sys
-from   Binary2AsciiFile  import *
-from   tecplot.zone      import *
-from   tecplot.binary    import *
-from   tecplot.binary.filestructure import *
+
+from   binarytecplot.binary2asciifile                import *
+from   binarytecplot.tecplot.zone                    import *
+from   binarytecplot.tecplot.binary                  import *
+from   binarytecplot.tecplot.binary.filestructure    import *
 
 
 

@@ -1,4 +1,4 @@
-from Binary2AsciiFile import *
+
 import numpy as np
 
 

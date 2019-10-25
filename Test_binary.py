@@ -1,8 +1,12 @@
 
-import sys
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+# REMEMBER TO UPDATE THE PYTHON PATH TO THE BASHRC FILE
+# 
+# like 
+# PYTHONPATH=${PYTHONPATH}:"/path/to/module(ReadBinaryTecplotFiles-master)"
+# <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
-sys.path.append('/home/$USER/tecplot-binary-read-master/binarytecplot')
 import binarytecplot as bt
 
-tecfine = bt.LoadTecplotFile("binary.plt", mode = 'binary', info = True)
+tecfine = bt.LoadTecplotFile("binary.plt", info = True)
 

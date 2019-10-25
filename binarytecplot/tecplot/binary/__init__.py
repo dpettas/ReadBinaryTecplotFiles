@@ -1,5 +1,4 @@
 import sys 
 
-sys.path.append("/home/pettas/tecplot-binary-read-master/binarytecplot")
 
-from tecplot.binary import *
+from binarytecplot.tecplot.binary import *

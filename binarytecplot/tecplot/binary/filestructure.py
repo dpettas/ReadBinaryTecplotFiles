@@ -1,10 +1,6 @@
-import sys 
-
-sys.path.append("/home/pettas/tecplot-binary-read-master/BinaryTecplot")
-
 import struct
-from   Binary2AsciiFile      import *
-from   tecplot.zone.Zone     import *
+from   binarytecplot.binary2asciifile      import *
+from   binarytecplot.tecplot.zone.Zone     import *
 
 __ZONE__      = 299.0
 __DATA__      = 357.0
