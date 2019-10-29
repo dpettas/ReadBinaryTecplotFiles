@@ -122,7 +122,7 @@ class FileStructure(Binary2AsciiFile):
 	def getVariables          (self)        : return self.variable
 	def getNumberOfZones      (self)        : return len(self.zone)
 	def getZone               (self, zone_id = 0): return self.zone[zone_id]
-
+	def VariableExist         (self, var): return var in self.getVariables()
 	def __repr__ (self): 
 		line   = ""
 		commit = "Tecplot File in Binary Form \n"; line += commit

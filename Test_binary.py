@@ -8,5 +8,7 @@
 
 import binarytecplot as bt
 
-tecfine = bt.LoadTecplotFile("binary.plt", info = True)
+
+
+tecline = bt.LoadTecplotFile("binary.plt", info = True)
 
