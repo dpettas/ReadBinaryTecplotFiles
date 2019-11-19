@@ -10,9 +10,6 @@ __AUXILIARY__ =   1.0
 
 
 
-
-
-
 class FileStructure(Binary2AsciiFile):
 	def __init__(self, filename):
 
