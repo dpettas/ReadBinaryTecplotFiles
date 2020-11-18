@@ -1,3 +1,4 @@
+import os
 import struct
 from   binarytecplot.binary2asciifile      import *
 from   binarytecplot.tecplot.zone.Zone     import *
@@ -160,6 +161,53 @@ class FileStructure(Binary2AsciiFile):
 
 
         asciiTec.close()
+
+
+    def dumpToFolder(self, filename):
+
+        if self.getNumberOfZones() > 1: raise NotImplementedError("The case for zone > 1 is not implemented. Please change..")
+
+        os.makedirs(filename, exist_ok = True)
+
+        # write index file 
+        with open(os.path.join(filename,"index"), 'w') as f: 
+            f.write("title\n")
+            f.write("zonename\n")
+            for v in self.getVariables(): f.write("{}\n".format(v))
+            f.write("elements")
+
+
+
+
+        # write title to file
+        with open(os.path.join(filename,"title")   ,'w') as f: f.write(self.getTitle())
+        # write zone to file
+        with open(os.path.join(filename,"zonename"),'w') as f: f.write(self.getZone().getName() )
+
+
+        # write variables to each file
+        zone = self.getZone()
+
+        def writeVariableData(file_, var): 
+            file_.write("{}\n".format(zone.getNumberOfPoints()) )
+
+            for v in zone[var]:
+                file_.write("{0:.10e}\n".format(v))
+
+
+        for var in self.getVariables():
+            with open(os.path.join(filename,var),'w') as f: writeVariableData(f,var)
+
+        # write elements to file
+        with open(os.path.join(filename,"elements"),'w') as f:
+            for elem in zone.getConnectivity():
+                # one base elements
+                str_elem = [ str(i+1) for i in elem]
+                f.write(" ".join(str_elem)+"\n")
+
+
+
+
 
     def __repr__ (self): 
         line   = ""

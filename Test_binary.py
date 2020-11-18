@@ -5,17 +5,12 @@
 # like 
 # export PYTHONPATH=${PYTHONPATH}:"/path/to/module(ReadBinaryTecplotFiles-master)"
 # <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-
+import os
 import binarytecplot as bt
 
 
+filename = "../../MyWork/LabFem/tecplot/time_0.5000.plt"
+tecline = bt.LoadTecplotFile(filename, info = False)
 
-tecline = bt.LoadTecplotFile("./binary.plt", info = True)
-
-
-
-
-
-tecline.toAsciiTeplot("test4.plt", title ="test title", zonename = "test zone")
-
+tecline.dumpToFolder( "test.plt" )
 
