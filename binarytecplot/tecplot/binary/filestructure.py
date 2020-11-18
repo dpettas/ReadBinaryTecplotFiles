@@ -133,12 +133,12 @@ class FileStructure(Binary2AsciiFile):
         Nelm      = self.getZone().getNumberOfElements()
         #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-        if "title"    in kwargs: title = kwargs["title"]
-        if "zonename" in kwargs: zone  = kwargs["zone" ]
+        if "title"    in kwargs: title    = kwargs["title"]
+        if "zonename" in kwargs: zonename = kwargs["zonename" ]
         #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
         # Open file
         #<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-        
+        sep     = lambda i, isplit: ("","\n") [(i+1)%isplit==0]
         varline = ','.join( ['"'+var+'"' for var in variables] )
 
         asciiTec = open(file = filename, mode = "w")
@@ -147,16 +147,16 @@ class FileStructure(Binary2AsciiFile):
         asciiTec.write( 'ZONE T="{}", DATAPACKING=BLOCK,N={},E={},ZONETYPE=FETRIANGLE\n'.format(zonename,Npts,Nelm) )
 
         zone = self.getZone(0)
-        sep  = lambda i, isplit: ("","\n") [(i+1)%isplit==0]
 
         for var in variables:
             scalarVar = zone[var] 
-            for i,v in enumerate(scalarVar): asciiTec.write("{0:.6e} {1}".format(v,sep(i,20) ) )
+            for i,v in enumerate(scalarVar): asciiTec.write("{0:.8e} {1}".format(v,sep(i,10) ) )
 
 
         for elem in zone.getConnectivity():
-            str_elem = " ".join([str(i) for i in elem])
-            asciiTec.write("{} {} {}\n".format(elem[0]+1, elem[1]+1, elem[2]+1) )
+            #first base numbering
+            str_elem = " ".join([str(i+1) for i in elem])
+            asciiTec.write("{}\n ".format(str_elem) )
 
 
         asciiTec.close()

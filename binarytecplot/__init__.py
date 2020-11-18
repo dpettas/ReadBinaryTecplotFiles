@@ -1,3 +1,4 @@
+import os
 import struct
 import sys
 
@@ -10,14 +11,18 @@ from   binarytecplot.tecplot.binary.filestructure    import *
 
 def LoadTecplotFile(filename, mode = 'binary', info = False): 
 
-	if   mode.lower() == 'binary': out =  FileStructure(filename)
-	elif mode.lower() == 'ascii' : print("Cannot read ascii files at the moment."); sys.exit(-1) 
-	else                         : print("Incorrect value of mode argument {}".format(mode))
+        
+    if not os.path.exists(filename):
+        raise FileNotFoundError("The file {} cannot found. \n Check paths..".format(filename))
+
+    if   mode.lower() == 'binary': out =  FileStructure(filename)
+    elif mode.lower() == 'ascii' : print("Cannot read ascii files at the moment."); sys.exit(-1) 
+    else                         : print("Incorrect value of mode argument {}".format(mode))
 
 
-	if info: print(out)
+    if info: print(out)
 
-	return out
+    return out
 
 
 

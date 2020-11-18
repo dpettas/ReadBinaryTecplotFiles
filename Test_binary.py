@@ -10,12 +10,12 @@ import binarytecplot as bt
 
 
 
-tecline = bt.LoadTecplotFile("./bintest3.plt", info = True)
+tecline = bt.LoadTecplotFile("./binary.plt", info = True)
 
 
 
 
 
-tecline.toAsciiTeplot("test4.plt", title ="test title" )
+tecline.toAsciiTeplot("test4.plt", title ="test title", zonename = "test zone")
 
 
