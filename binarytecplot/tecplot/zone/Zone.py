@@ -199,21 +199,21 @@ class Zone(object):
 	# GETTERS
 	# 
 	# <><><><><><><><><><><><><><><><><><><><><><><><>
-	def getName            (self)          : return self.name
-	def getParentZone      (self)          : return self.parent_zone
-	def getStrand_id       (self)          : return self.strand_id
-	def getSolutionTime    (self)          : return self.solutiontime
-	def getVariableFormat  (self)          : return self.variable_format
-	def getPassiveVariables(self)          : return self.passive_variables
-	def getVariableSharing (self)          : return self.variable_sharing
-	def getConnectivity    (self)          : return np.array(self.connectivity)
-	def getVariable        (self, var_id)  : return self.variable[var_id]
-	def getData            (self, var_id)  : return np.array(self.data[var_id]).astype(np.float64)
-	def getDataType        (self)          : return self.type
-	def getDataPacking     (self)          : return self.datapacking
-	def getNumberOfPoints  (self)          : return self.number_points
-	def getNumberOfElements(self)          : return self.number_elements
-	def __getitem__        (self, var_name): return self.getData( self.variable.index(var_name) )
+	def getName            (self)            : return self.name
+	def getParentZone      (self)            : return self.parent_zone
+	def getStrand_id       (self)            : return self.strand_id
+	def getSolutionTime    (self)            : return self.solutiontime
+	def getVariableFormat  (self)            : return self.variable_format
+	def getPassiveVariables(self)            : return self.passive_variables
+	def getVariableSharing (self)            : return self.variable_sharing
+	def getConnectivity    (self)            : return np.array(self.connectivity)
+	def getVariable        (self, var_id)    : return self.variable[var_id]
+	def getData            (self, var_id)    : return np.array(self.data[var_id]).astype(np.float64)
+	def getDataType        (self)            : return self.type
+	def getDataPacking     (self)            : return self.datapacking
+	def getNumberOfPoints  (self)            : return self.number_points
+	def getNumberOfElements(self)            : return self.number_elements
+	def __getitem__        (self, var_name)  : return self.getData( self.variable.index(var_name) )
 
 	def __repr__ (self):
 		line = ""
