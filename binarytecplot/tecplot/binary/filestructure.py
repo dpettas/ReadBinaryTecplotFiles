@@ -200,6 +200,7 @@ class FileStructure(Binary2AsciiFile):
 
         # write elements to file
         with open(os.path.join(filename,"elements"),'w') as f:
+            f.write("{}\n".format(zone.getNumberOfElements()))
             for elem in zone.getConnectivity():
                 # one base elements
                 str_elem = [ str(i+1) for i in elem]
