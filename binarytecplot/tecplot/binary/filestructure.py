@@ -179,9 +179,9 @@ class FileStructure(Binary2AsciiFile):
 
 
         # write number of nodes
-        with open(os.path.join(filename,'numberOfNodes'),'w') as f: f.write(self.getZone().getNumberOfPoints())
+        with open(os.path.join(filename,'numberOfNodes'),'w')    as f: f.write("{}\n".format(self.getZone().getNumberOfPoints()))
         # write number of elements
-        with open(os.path.join(filename,'numberOfElements'),'w') as f: f.write(self.getZone().getNumberOfElements)
+        with open(os.path.join(filename,'numberOfElements'),'w') as f: f.write("{}\n".format(self.getZone().getNumberOfElements))
 
         # write title to file
         with open(os.path.join(filename,"title")   ,'w') as f: f.write(self.getTitle())
